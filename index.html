@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatbot Interface</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Left Panel: Configuration -->
+      <div class="config-panel">
+        <div class="config-header">
+          <h2>Configuration</h2>
+          <button id="toggleConfig" class="toggle-btn">−</button>
+        </div>
+
+        <div class="config-content">
+          <div class="config-section">
+            <label for="serverUrl">API URL:</label>
+            <input
+              type="text"
+              id="serverUrl"
+              placeholder="http://localhost:8000"
+              value="http://localhost:8000"
+            />
+          </div>
+
+          <div class="config-section">
+            <label for="authType">Authentication Type:</label>
+            <select id="authType">
+              <option value="none">None</option>
+              <option value="bearer">Bearer Token</option>
+              <option value="proxy">Proxy Token</option>
+            </select>
+          </div>
+
+          <div
+            class="config-section"
+            id="authTokenSection"
+            style="display: none"
+          >
+            <label for="authToken">Authorization Token:</label>
+            <input
+              type="password"
+              id="authToken"
+              placeholder="Enter your token"
+            />
+          </div>
+
+          <div
+            class="config-section"
+            id="proxyTokenSection"
+            style="display: none"
+          >
+            <label for="proxyToken">X-Proxy-Token:</label>
+            <input type="password" id="proxyToken" placeholder="Proxy token" />
+          </div>
+
+          <div class="config-section">
+            <label for="branchServiceId">Branch Service ID:</label>
+            <input
+              type="text"
+              id="branchServiceId"
+              placeholder="UUID of branch service"
+            />
+          </div>
+
+          <div class="config-section">
+            <label for="sessionId">Session ID (optional):</label>
+            <input
+              type="text"
+              id="sessionId"
+              placeholder="Leave empty to create new session"
+            />
+          </div>
+
+          <button id="loadConfig" class="btn-primary">Load Config</button>
+          <button id="createSession" class="btn-secondary">
+            Create New Session
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Panel: Chat -->
+      <div class="chat-panel">
+        <!-- Theme Info -->
+        <div class="theme-info" id="themeInfo">
+          <div class="theme-header">
+            <div class="avatar-placeholder" id="avatarPlaceholder"></div>
+            <div class="theme-details">
+              <h3 id="displayName">Chatbot</h3>
+              <p id="greeting"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Messages Area -->
+        <div class="messages-container" id="messagesContainer">
+          <div class="message system-message">
+            <p>
+              Welcome to the Chatbot Interface. Configure your settings and
+              create a session to start chatting.
+            </p>
+          </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-area">
+          <input
+            type="text"
+            id="userInput"
+            placeholder="Type your message..."
+            disabled
+            class="message-input"
+          />
+          <button id="sendBtn" class="send-button" disabled>Send</button>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="status-bar" id="statusBar">
+          <span id="connectionStatus">Disconnected</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recommendations Modal -->
+    <div id="recommendationsModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Recommendations</h2>
+          <button class="modal-close" onclick="closeRecommendations()">
+            &times;
+          </button>
+        </div>
+        <div id="recommendationsContent" class="modal-body"></div>
+      </div>
+    </div>
+
+    <!-- Query Data Modal -->
+    <div id="queryDataModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Query Data</h2>
+          <button class="modal-close" onclick="closeQueryData()">
+            &times;
+          </button>
+        </div>
+        <div id="queryDataContent" class="modal-body"></div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

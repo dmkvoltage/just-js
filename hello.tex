@@ -1,0 +1,1708 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+
+% Page setup
+\geometry{margin=1in}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{QR Business Management System - System Description Document}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Title formatting
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries\color{blue!70!black}}
+{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{-20pt}{40pt}
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    filecolor=magenta,
+    urlcolor=cyan,
+    pdftitle={QR Business Management System - SDD},
+    pdfauthor={},
+    pdfsubject={System Description Document},
+    pdfkeywords={QR, Business Management, Multi-Branch Operations}
+}
+
+% Custom commands
+\newcommand{\feature}[1]{\textbf{\color{blue!70!black}#1}}
+\newcommand{\benefit}[1]{\textit{#1}}
+
+\begin{document}
+
+% Title Page
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    
+    {\Huge\bfseries QR Business Management System\par}
+    \vspace{1cm}
+    {\LARGE System Description Document\par}
+    \vspace{2cm}
+    
+    {\Large\itshape A Comprehensive Platform for Multi-Branch Business Operations\par}
+    \vspace{3cm}
+    
+    {\large Version 1.0\par}
+    {\large \today\par}
+    \vfill
+    
+    {\large Document Classification: Confidential\par}
+    {\large For Investor Review\par}
+\end{titlepage}
+
+% Table of Contents
+\tableofcontents
+\newpage
+
+% Document Control
+\chapter*{Document Control}
+\addcontentsline{toc}{chapter}{Document Control}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Document Title} & QR Business Management System - SDD \\
+\hline
+\textbf{Version} & 1.0 \\
+\hline
+\textbf{Date} & \today \\
+\hline
+\textbf{Status} & Final \\
+\hline
+\textbf{Classification} & Confidential \\
+\hline
+\textbf{Distribution} & Investors, Stakeholders \\
+\hline
+\end{tabular}
+\end{table}
+
+\section*{Revision History}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|p{6cm}|}
+\hline
+\textbf{Version} & \textbf{Date} & \textbf{Author} & \textbf{Changes} \\
+\hline
+1.0 & \today & System Team & Initial release for investor review \\
+\hline
+\end{tabular}
+\end{table}
+
+\newpage
+
+% Executive Summary
+\chapter{Executive Summary}
+
+\section{Introduction}
+
+The QR Business Management System is a comprehensive cloud-based platform designed to revolutionize how multi-branch businesses operate and engage with their customers. By leveraging QR code technology, the system eliminates traditional barriers between businesses and customers, enabling instant, frictionless access to services without the need for app downloads or account creation.
+
+\section{Business Problem}
+
+Modern multi-branch businesses face several critical challenges:
+
+\begin{itemize}
+    \item \textbf{Fragmented Operations:} Managing multiple locations with different service offerings requires juggling various systems and tools, leading to inefficiency and errors.
+    
+    \item \textbf{Customer Friction:} Traditional digital engagement requires customers to download apps, create accounts, and navigate complex interfaces before accessing services.
+    
+    \item \textbf{Limited Visibility:} Business owners struggle to gain real-time insights into operations across all locations, making data-driven decisions difficult.
+    
+    \item \textbf{Staff Coordination:} Coordinating staff across multiple branches and services is complex, with communication gaps leading to poor customer service.
+    
+    \item \textbf{Scalability Issues:} Existing solutions don't scale gracefully from single locations to multi-branch enterprises.
+\end{itemize}
+
+\section{Our Solution}
+
+The QR Business Management System addresses these challenges through an integrated platform that combines:
+
+\begin{itemize}
+    \item \textbf{Instant Customer Access:} Customers scan a QR code with their phone's camera and immediately access menus, services, and ordering capabilities—no app download or registration required.
+    
+    \item \textbf{Centralized Management:} Business owners manage all branches, services, staff, and operations from a single unified dashboard.
+    
+    \item \textbf{Flexible Business Structure:} Support for multiple business types (restaurants, hotels, spas) with customizable services per location.
+    
+    \item \textbf{Advanced Analytics:} Real-time tracking of customer visits, service utilization, and business performance across all locations.
+    
+    \item \textbf{AI-Powered Engagement:} Intelligent chatbots assist customers with questions, recommendations, and service requests.
+    
+    \item \textbf{Integrated Staff Communication:} Real-time calling system connects customers with staff for immediate assistance.
+\end{itemize}
+
+\section{Target Market}
+
+The system is designed for:
+
+\begin{itemize}
+    \item \textbf{Restaurant Chains:} From fast-casual to fine dining, managing menus, orders, and customer experience across multiple locations.
+    
+    \item \textbf{Hotel and Lodging Businesses:} Hotels, resorts, and vacation rental operators managing rooms, amenities, and guest services.
+    
+    \item \textbf{Service Businesses:} Spas, salons, fitness centers, and other service-based businesses with multiple locations.
+    
+    \item \textbf{Mixed-Use Enterprises:} Businesses operating multiple service types (e.g., a hotel with restaurants and spa facilities).
+\end{itemize}
+
+\section{Key Differentiators}
+
+\begin{enumerate}
+    \item \textbf{Zero-Friction Customer Experience:} Unlike competitors requiring app downloads, our QR-based approach provides instant access through any smartphone camera.
+    
+    \item \textbf{True Multi-Business Support:} Manage completely different business types within the same platform, not just multiple locations of the same business.
+    
+    \item \textbf{Granular Permission System:} Sophisticated role-based access control allows delegation of management responsibilities while maintaining security.
+    
+    \item \textbf{Built-in Analytics:} Comprehensive visitor tracking and performance metrics without requiring third-party analytics tools.
+    
+    \item \textbf{AI Integration:} Native AI chatbot and intelligent recommendation engine enhance customer engagement.
+\end{enumerate}
+
+\section{Investment Highlights}
+
+\begin{itemize}
+    \item \textbf{Market Opportunity:} The global restaurant management software market alone is projected to reach \$12.5 billion by 2028, with similar growth in hospitality management systems.
+    
+    \item \textbf{Scalable Architecture:} Cloud-based infrastructure built to handle growth from single-location businesses to international chains.
+    
+    \item \textbf{Recurring Revenue Model:} Subscription-based pricing with multiple tiers ensures predictable, recurring revenue streams.
+    
+    \item \textbf{Low Customer Acquisition Cost:} QR-based approach reduces onboarding friction, leading to higher conversion rates and lower CAC.
+    
+    \item \textbf{High Retention Potential:} Once integrated into daily operations, switching costs for businesses are high, ensuring strong customer retention.
+\end{itemize}
+
+\newpage
+
+\chapter{System Overview}
+
+\section{System Purpose}
+
+The QR Business Management System serves as a comprehensive digital infrastructure for multi-branch business operations. It bridges the gap between business management needs and customer engagement, providing tools for both operational control and customer interaction.
+
+\section{System Scope}
+
+\subsection{In Scope}
+
+The system provides complete functionality for:
+
+\begin{itemize}
+    \item User account management and authentication
+    \item Multi-business and multi-branch organizational structure
+    \item QR code generation and customer access management
+    \item Restaurant operations including menu management and ordering
+    \item Lodging operations including room management and bookings
+    \item Staff coordination and device management
+    \item Real-time communication between customers and staff
+    \item AI-powered customer assistance
+    \item Comprehensive analytics and reporting
+    \item Manager invitation and permission management
+\end{itemize}
+
+\subsection{Out of Scope}
+
+The following are not included in the current system:
+
+\begin{itemize}
+    \item Payment processing (integrates with external payment gateways)
+    \item Accounting and financial management
+    \item Inventory management beyond menu items
+    \item Employee payroll and HR management
+    \item Marketing automation and email campaigns
+    \item Table reservation systems (future enhancement)
+\end{itemize}
+
+\section{System Architecture}
+
+The system follows a modern cloud-based architecture with clear separation of concerns:
+
+\subsection{Architecture Layers}
+
+\begin{enumerate}
+    \item \textbf{Presentation Layer:} Web and mobile interfaces for different user types (business owners, managers, staff, customers)
+    
+    \item \textbf{API Layer:} RESTful API endpoints handling all business logic and data operations
+    
+    \item \textbf{Authentication Layer:} JWT-based authentication system with role-based access control
+    
+    \item \textbf{Business Logic Layer:} Core system modules implementing business rules and workflows
+    
+    \item \textbf{Data Layer:} Relational database with row-level security for multi-tenant data isolation
+    
+    \item \textbf{Integration Layer:} External service integrations (AI, video calling, notifications)
+\end{enumerate}
+
+\subsection{Key Technologies}
+
+\begin{itemize}
+    \item \textbf{Backend:} Python-based API framework
+    \item \textbf{Database:} PostgreSQL with advanced security features
+    \item \textbf{Authentication:} JWT (JSON Web Tokens)
+    \item \textbf{Real-time Communication:} LiveKit for video/audio calling
+    \item \textbf{Push Notifications:} Firebase Cloud Messaging (FCM)
+    \item \textbf{AI Services:} Integration with modern language models for chatbot functionality
+\end{itemize}
+
+\newpage
+
+\chapter{User Roles and Permissions}
+
+\section{User Role Hierarchy}
+
+The system implements a sophisticated role-based access control system that balances flexibility with security.
+
+\section{Business Owner}
+
+\subsection{Overview}
+The Business Owner is the top-level user who creates and owns one or more businesses within the platform. This role has unrestricted access to all resources they own.
+
+\subsection{Core Capabilities}
+
+\begin{itemize}
+    \item \textbf{Business Management:}
+    \begin{itemize}
+        \item Create unlimited businesses
+        \item Configure business details (name, description, logo, website)
+        \item Set default currency and business settings
+        \item Activate or deactivate entire businesses
+        \item Delete businesses and all associated data
+    \end{itemize}
+    
+    \item \textbf{Branch Management:}
+    \begin{itemize}
+        \item Create branches at any location
+        \item Configure branch details (address, contact, hours)
+        \item Set geographic coordinates for mapping
+        \item Activate or deactivate branches
+    \end{itemize}
+    
+    \item \textbf{Service Configuration:}
+    \begin{itemize}
+        \item Add services to branches (restaurant, lodging, etc.)
+        \item Configure service-specific settings
+        \item Generate QR codes for customer access
+        \item Monitor service performance
+    \end{itemize}
+    
+    \item \textbf{Manager Administration:}
+    \begin{itemize}
+        \item Invite managers at any level (business, branch, service)
+        \item Assign and revoke manager permissions
+        \item Impersonate managers for troubleshooting
+        \item View all manager activities
+    \end{itemize}
+    
+    \item \textbf{Analytics and Reporting:}
+    \begin{itemize}
+        \item Access comprehensive analytics across all businesses
+        \item View real-time visitor statistics
+        \item Monitor service utilization
+        \item Export data for external analysis
+    \end{itemize}
+\end{itemize}
+
+\subsection{Permission Set}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Permission} & \textbf{Access Level} \\
+\hline
+MANAGE\_BUSINESS & Full (Create, Read, Update, Delete) \\
+\hline
+MANAGE\_BRANCH & Full (Create, Read, Update, Delete) \\
+\hline
+MANAGE\_BRANCH\_SERVICES & Full (Create, Read, Update, Delete) \\
+\hline
+MANAGE\_STAFF & Full (All branches and services) \\
+\hline
+VIEW\_ANALYTICS & Full (All businesses and branches) \\
+\hline
+INVITE\_MANAGERS & Yes \\
+\hline
+MANAGE\_MANAGERS & Yes \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Business Manager}
+
+\subsection{Overview}
+A Business Manager is assigned to oversee an entire business entity. They can manage all branches and services within that business but cannot modify core business ownership or create new businesses.
+
+\subsection{Core Capabilities}
+
+\begin{itemize}
+    \item \textbf{Branch Operations:}
+    \begin{itemize}
+        \item Create new branches within assigned business
+        \item Update branch information
+        \item Add and configure services at branches
+        \item Generate QR codes for branches
+    \end{itemize}
+    
+    \item \textbf{Service Management:}
+    \begin{itemize}
+        \item Configure all services across all branches
+        \item Manage menus and service offerings
+        \item Set pricing and availability
+    \end{itemize}
+    
+    \item \textbf{Staff Coordination:}
+    \begin{itemize}
+        \item Create and manage staff units
+        \item Register staff devices
+        \item Monitor staff activities
+    \end{itemize}
+    
+    \item \textbf{Analytics Access:}
+    \begin{itemize}
+        \item View business-wide analytics
+        \item Access all branch performance data
+        \item Generate reports for stakeholders
+    \end{itemize}
+\end{itemize}
+
+\subsection{Limitations}
+
+\begin{itemize}
+    \item Cannot modify business owner information
+    \item Cannot delete the business
+    \item Cannot create additional businesses
+    \item Cannot access other businesses not assigned to them
+\end{itemize}
+
+\section{Branch Manager}
+
+\subsection{Overview}
+A Branch Manager oversees operations at one or more specific branches. Their access is limited to assigned branches only.
+
+\subsection{Core Capabilities}
+
+\begin{itemize}
+    \item \textbf{Service Management:}
+    \begin{itemize}
+        \item Create and configure services within assigned branch
+        \item Manage service offerings and availability
+        \item Generate QR codes for services
+    \end{itemize}
+    
+    \item \textbf{Staff Management:}
+    \begin{itemize}
+        \item Create staff units for branch services
+        \item Register and manage staff devices
+        \item Monitor staff performance
+    \end{itemize}
+    
+    \item \textbf{Menu Control (for restaurants):}
+    \begin{itemize}
+        \item Create and update menu items
+        \item Manage categories and pricing
+        \item Configure customizations and add-ons
+    \end{itemize}
+    
+    \item \textbf{Analytics:}
+    \begin{itemize}
+        \item View branch-specific performance metrics
+        \item Track visitor statistics for the branch
+        \item Monitor service utilization
+    \end{itemize}
+\end{itemize}
+
+\subsection{Limitations}
+
+\begin{itemize}
+    \item Cannot create new branches
+    \item Cannot access data from other branches
+    \item Cannot modify branch manager assignments
+    \item Limited to assigned branch scope
+\end{itemize}
+
+\section{Service Manager}
+
+\subsection{Overview}
+A Service Manager is responsible for specific services within a branch (e.g., the restaurant service at a hotel branch). This is the most granular management level.
+
+\subsection{Core Capabilities}
+
+\begin{itemize}
+    \item \textbf{Service Configuration:}
+    \begin{itemize}
+        \item Update service details and settings
+        \item Configure service-specific features
+        \item Manage service availability
+    \end{itemize}
+    
+    \item \textbf{Content Management:}
+    \begin{itemize}
+        \item Create and edit menu items (restaurants)
+        \item Manage room configurations (lodging)
+        \item Update service descriptions and images
+    \end{itemize}
+    
+    \item \textbf{Staff Coordination:}
+    \begin{itemize}
+        \item Create staff units for their service
+        \item Manage service staff devices
+        \item Configure AI agent for their service
+    \end{itemize}
+    
+    \item \textbf{Analytics:}
+    \begin{itemize}
+        \item View service-level analytics only
+        \item Track service-specific visitor data
+        \item Monitor service performance metrics
+    \end{itemize}
+\end{itemize}
+
+\subsection{Limitations}
+
+\begin{itemize}
+    \item Cannot access other services at the same branch
+    \item Cannot create new services
+    \item Cannot manage branch-level settings
+    \item Most restrictive management role
+\end{itemize}
+
+\section{Permission Matrix}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Operation} & \textbf{Owner} & \textbf{Business Mgr} & \textbf{Branch Mgr} & \textbf{Service Mgr} \\
+\hline
+Create Business & \checkmark & \texttimes & \texttimes & \texttimes \\
+\hline
+Modify Business & \checkmark & \texttimes & \texttimes & \texttimes \\
+\hline
+Delete Business & \checkmark & \texttimes & \texttimes & \texttimes \\
+\hline
+Create Branch & \checkmark & \checkmark & \texttimes & \texttimes \\
+\hline
+Modify Branch & \checkmark & \checkmark & Assigned only & \texttimes \\
+\hline
+Delete Branch & \checkmark & \checkmark & \texttimes & \texttimes \\
+\hline
+Create Service & \checkmark & \checkmark & \checkmark & \texttimes \\
+\hline
+Modify Service & \checkmark & \checkmark & \checkmark & Assigned only \\
+\hline
+Manage Menu & \checkmark & \checkmark & \checkmark & \checkmark \\
+\hline
+Manage Staff & \checkmark & \checkmark & \checkmark & \checkmark \\
+\hline
+View Analytics & All & Business-wide & Branch only & Service only \\
+\hline
+Invite Managers & \checkmark & \texttimes & \texttimes & \texttimes \\
+\hline
+\end{tabular}
+\end{table}
+
+\newpage
+
+\chapter{Business Structure}
+
+\section{Organizational Hierarchy}
+
+The system implements a three-tier hierarchical structure that mirrors real-world business organization.
+
+\section{Business Entity}
+
+\subsection{Definition}
+A Business represents the top-level organizational unit—typically a company or corporation. One user can own multiple businesses (e.g., a restaurant chain and a separate hotel chain).
+
+\subsection{Business Attributes}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Attribute} & \textbf{Description} \\
+\hline
+Name & The legal or trading name of the business (e.g., "Gourmet Eats Inc") \\
+\hline
+Owner & The user account that created and owns this business \\
+\hline
+Description & A detailed description of the business, its mission, and offerings \\
+\hline
+Website & The business's official website URL \\
+\hline
+Logo & Brand image displayed in customer-facing interfaces \\
+\hline
+Currency & Default currency for all financial transactions (USD, EUR, etc.) \\
+\hline
+Status & Current operational status: Active or Inactive \\
+\hline
+Created Date & Timestamp when the business was established in the system \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Use Cases}
+
+\begin{itemize}
+    \item \textbf{Single Business Owner:} A restaurant owner manages "Delicious Pizza Co" with 5 locations
+    \item \textbf{Multi-Business Owner:} An entrepreneur manages "Delicious Pizza Co" (restaurants) and "Comfort Stays" (hotels) as separate businesses
+    \item \textbf{Franchise System:} A franchisee operates multiple branded restaurants under one business entity
+\end{itemize}
+
+\subsection{Business Operations}
+
+\begin{enumerate}
+    \item \textbf{Creation:} Users create a business by providing name, description, and basic details
+    \item \textbf{Configuration:} Set currency, upload logo, add website and contact information
+    \item \textbf{Activation:} New businesses start in active status and can be deactivated temporarily
+    \item \textbf{Deletion:} Permanently removes business and all associated branches, services, and data
+\end{enumerate}
+
+\section{Branch Entity}
+
+\subsection{Definition}
+A Branch represents a physical location where the business operates. Each branch belongs to exactly one business and can host multiple services.
+
+\subsection{Branch Attributes}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Attribute} & \textbf{Description} \\
+\hline
+Name & Location identifier (e.g., "Downtown Location", "Airport Branch") \\
+\hline
+Address & Full physical address for customer navigation and deliveries \\
+\hline
+Phone & Contact number for customer inquiries \\
+\hline
+Latitude & Geographic coordinate for mapping and location services \\
+\hline
+Longitude & Geographic coordinate for mapping and location services \\
+\hline
+Manager & Primary contact person responsible for branch operations \\
+\hline
+Operating Hours & Daily schedule (e.g., "Monday-Friday: 09:00-22:00") \\
+\hline
+Status & Active or Inactive - controls whether customers can access this branch \\
+\hline
+Created Date & When the branch was added to the system \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Branch Examples}
+
+\begin{itemize}
+    \item \textbf{Restaurant Chain:}
+    \begin{itemize}
+        \item Business: "Delicious Pizza Co"
+        \item Branches: "Downtown", "Westside", "Airport", "Mall Location"
+    \end{itemize}
+    
+    \item \textbf{Hotel Chain:}
+    \begin{itemize}
+        \item Business: "Comfort Stays Hotels"
+        \item Branches: "New York Property", "Los Angeles Property", "Chicago Property"
+    \end{itemize}
+    
+    \item \textbf{Spa Network:}
+    \begin{itemize}
+        \item Business: "Serenity Spa & Wellness"
+        \item Branches: "City Center Spa", "Beachfront Location", "Mountain Resort Spa"
+    \end{itemize}
+\end{itemize}
+
+\subsection{Branch Operations}
+
+\begin{enumerate}
+    \item \textbf{Creation:} Branch managers or business owners add new locations with full address details
+    \item \textbf{Service Assignment:} Each branch can host multiple services (restaurant, lodging, etc.)
+    \item \textbf{QR Code Generation:} Branches get unique QR codes for customer access
+    \item \textbf{Manager Assignment:} Specific users can be assigned as branch managers
+    \item \textbf{Status Management:} Branches can be temporarily deactivated (e.g., for renovations)
+\end{enumerate}
+
+\section{Service Entity}
+
+\subsection{Definition}
+A Service represents a specific type of operation available at a branch. This is where the actual customer-facing functionality exists.
+
+\subsection{Service Types}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Service Type} & \textbf{Description and Features} \\
+\hline
+Restaurant & Food and beverage service with menu management, ordering, table service, and customizations \\
+\hline
+Lodging & Accommodation service with room management, booking, amenities, and guest services \\
+\hline
+Spa & Wellness services with treatment menus, appointment booking, and therapist scheduling \\
+\hline
+Retail & Product sales with inventory display, categorization, and shopping features \\
+\hline
+General & Flexible custom service type for unique business needs \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Service Attributes}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Attribute} & \textbf{Description} \\
+\hline
+Service Type & The category of service (Restaurant, Lodging, Spa, etc.) \\
+\hline
+Name & Display name (e.g., "Fine Dining Restaurant", "Rooftop Bar") \\
+\hline
+Description & Detailed explanation of what the service offers \\
+\hline
+Image & Visual representation shown to customers \\
+\hline
+Manager & Designated service manager responsible for operations \\
+\hline
+Status & Active or Inactive - controls customer access \\
+\hline
+QR Code & Unique code that customers scan to access this service \\
+\hline
+Created Date & When the service was established \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Multi-Service Branches}
+
+A single branch can host multiple services simultaneously. Examples:
+
+\begin{itemize}
+    \item \textbf{Hotel Branch:}
+    \begin{itemize}
+        \item Service 1: Lodging (room bookings)
+        \item Service 2: Restaurant (hotel dining)
+        \item Service 3: Spa (wellness treatments)
+        \item Service 4: Bar (evening entertainment)
+    \end{itemize}
+    
+    \item \textbf{Resort Branch:}
+    \begin{itemize}
+        \item Service 1: Accommodation
+        \item Service 2: Fine Dining Restaurant
+        \item Service 3: Casual Café
+        \item Service 4: Beach Bar
+        \item Service 5: Activities Center
+    \end{itemize}
+\end{itemize}
+
+\subsection{Service Configuration}
+
+Each service type has specific configuration options:
+
+\begin{itemize}
+    \item \textbf{Restaurant Services:}
+    \begin{itemize}
+        \item Menu categories and items
+        \item Pricing and customizations
+        \item Table management
+        \item Order processing
+    \end{itemize}
+    
+    \item \textbf{Lodging Services:}
+    \begin{itemize}
+        \item Room types and capacity
+        \item Floor organization
+        \item Amenities list
+        \item Booking availability
+    \end{itemize}
+    
+    \item \textbf{All Services:}
+    \begin{itemize}
+        \item Staff units and devices
+        \item Chatbot configuration
+        \item Customer calling system
+        \item Analytics tracking
+    \end{itemize}
+\end{itemize}
+
+\section{Practical Examples}
+
+\subsection{Example 1: Simple Restaurant Chain}
+
+\begin{verbatim}
+Business: "Taco Fiesta"
+    ├── Branch: "Downtown Location"
+    │   └── Service: "Restaurant" (Mexican food menu)
+    ├── Branch: "Airport Location"
+    │   └── Service: "Restaurant" (Mexican food menu)
+    └── Branch: "Mall Food Court"
+        └── Service: "Quick Service" (Limited menu)
+\end{verbatim}
+
+\subsection{Example 2: Complex Hotel Property}
+
+\begin{verbatim}
+Business: "Grand Luxury Hotels"
+    └── Branch: "Manhattan Property"
+        ├── Service: "Hotel Lodging" (250 rooms)
+        ├── Service: "Rooftop Restaurant" (Fine dining)
+        ├── Service: "Lobby Café" (Coffee and light meals)
+        ├── Service: "Spa & Wellness" (Treatments)
+        └── Service: "Business Center" (Meeting rooms)
+\end{verbatim}
+
+\subsection{Example 3: Multi-Business Owner}
+
+\begin{verbatim}
+Owner: John Smith
+    ├── Business: "Smith Restaurant Group"
+    │   ├── Branch: "Steakhouse Downtown"
+    │   │   └── Service: "Fine Dining Restaurant"
+    │   └── Branch: "Burger Joint Westside"
+    │       └── Service: "Fast Casual Restaurant"
+    └── Business: "Smith Hotels"
+        ├── Branch: "Budget Inn City Center"
+        │   └── Service: "Lodging"
+        └── Branch: "Luxury Resort Beach"
+            ├── Service: "Lodging"
+            └── Service: "Resort Restaurant"
+\end{verbatim}
+
+\newpage
+
+\chapter{QR Code System and Customer Access}
+
+\section{System Overview}
+
+The QR Code System is the cornerstone of customer interaction, enabling instant, frictionless access to business services without requiring customers to download apps or create accounts.
+
+\section{How QR Codes Work}
+
+\subsection{The Customer Experience}
+
+\begin{enumerate}
+    \item \textbf{Discovery:} Customer arrives at a business location and sees a QR code displayed on:
+    \begin{itemize}
+        \item Table tents (restaurants)
+        \item Room cards (hotels)
+        \item Reception desk signage
+        \item Promotional materials
+        \item Outdoor displays
+    \end{itemize}
+    
+    \item \textbf{Scanning:} Customer opens their phone's camera app (no special app needed)
+    
+    \item \textbf{Recognition:} The phone automatically recognizes the QR code
+    
+    \item \textbf{Access:} Customer taps the notification and is instantly taken to the business's services
+    
+    \item \textbf{Interaction:} Customer can immediately:
+    \begin{itemize}
+        \item Browse the menu
+        \item Place orders
+        \item Chat with AI assistant
+        \item Call for staff assistance
+        \item Request services
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Technical Flow}
+
+\begin{enumerate}
+    \item \textbf{QR Code Contains:} A unique URL pointing to the system (e.g., https://system.com/proxy/router/ABC123)
+    
+    \item \textbf{System Validates:}
+    \begin{itemize}
+        \item Is the QR code valid?
+        \item Is the associated service active?
+        \item Has the customer exceeded daily visit limits? (fraud prevention)
+    \end{itemize}
+    
+    \item \textbf{System Generates:} A temporary "proxy token" valid for 15 minutes
+    
+    \item \textbf{System Tracks:}
+    \begin{itemize}
+        \item Customer's IP address
+        \item Device fingerprint
+        \item Visit timestamp
+        \item Service accessed
+    \end{itemize}
+    
+    \item \textbf{System Redirects:} Customer to the business interface with their token
+    
+    \item \textbf{Customer Interacts:} Token allows read-only access to menus and services
+\end{enumerate}
+
+\section{Proxy Token System}
+
+\subsection{What is a Proxy Token?}
+
+A proxy token is a temporary digital credential that grants limited access without requiring authentication. Think of it like a guest pass to a building—it lets you in for a specific time and purpose, but you can't access restricted areas.
+
+\subsection{Token Characteristics}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Property} & \textbf{Description} \\
+\hline
+Duration & Valid for 15 minutes (configurable per business) \\
+\hline
+Permissions & Read-only access to menus, services, and public information \\
+\hline
+Usage & Can be single-use or limited-use depending on configuration \\
+\hline
+Scope & Limited to specific branch or service \\
+\hline
+Security & Tied to device fingerprint to prevent token theft \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Security Measures}
+
+\begin{enumerate}
+    \item \textbf{Device Fingerprinting:}
+    \begin{itemize}
+        \item System analyzes browser headers (User-Agent, language, encoding)
+        \item Creates unique identifier for each device
+        \item Prevents token from being copied to different device
+    \end{itemize}
+    
+    \item \textbf{IP Address Tracking:}
+    \begin{itemize}
+        \item Records customer's IP address
+        \item Detects suspicious access patterns
+        \item Prevents abuse from single source
+    \end{itemize}
+    
+    \item \textbf{Rate Limiting:}
+    \begin{itemize}
+        \item Maximum scans per device per day
+        \item Prevents automated scraping
+        \item Protects against fraudulent access
+    \end{itemize}
+    
+    \item \textbf{Token Expiration:}
+    \begin{itemize}
+        \item Tokens automatically expire after 15 minutes
+        \item Customer can scan again for new token
+        \item Prevents long-term unauthorized access
+    \end{itemize}
+\end{enumerate}
+
+\section{Visitor Analytics}
+
+\subsection{Data Collection}
+
+Every QR code scan triggers comprehensive data collection:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Data Point} & \textbf{Purpose} \\
+\hline
+IP Address & Geographic analysis, fraud detection \\
+\hline
+Device Fingerprint & Unique visitor identification \\
+\hline
+Timestamp & Peak hours analysis, traffic patterns \\
+\hline
+User-Agent & Device type statistics (iOS, Android, desktop) \\
+\hline
+Branch/Service & Service utilization tracking \\
+\hline
+Visit Type & First-time vs. returning visitor classification \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Analytics Metrics}
+
+Business owners gain insights through:
+
+\begin{itemize}
+    \item \textbf{Total Visits:} Complete count of QR code scans
+    \item \textbf{Unique Visitors:} Distinct individuals based on device fingerprint + IP
+    \item \textbf{Return Visits:} Customers who scan multiple times
+    \item \textbf{Peak Hours:} Times of day with highest traffic
+    \item \textbf{Device Distribution:} Percentage of iOS vs Android vs desktop
+    \item \textbf{Geographic Data:} Visitor locations based on IP addresses
+    \item \textbf{Service Popularity:} Which services are accessed most
+    \item \textbf{Time on Service:} How long customers engage with each service
+\end{itemize}
+
+\subsection{Privacy Compliance}
+
+The system respects customer privacy:
+
+\begin{itemize}
+    \item No personally identifiable information (PII) is collected
+    \item No names, email addresses, or phone numbers required
+    \item Device fingerprints are hashed and anonymized
+    \item IP addresses are used only for analytics and security
+    \item Customers can use services completely anonymously
+    \item Compliant with GDPR and privacy regulations
+\end{itemize}
+
+\section{QR Code Types}
+
+\subsection{Branch-Level QR Codes}
+
+When scanned, customer sees:
+\begin{itemize}
+    \item List of all services available at the branch
+    \item Branch information and contact details
+    \item Option to select specific service
+    \item General branch announcements
+\end{itemize}
+
+\textbf{Use Case:} Posted at building entrance, parking lot, or main reception
+
+\subsection{Service-Level QR Codes}
+
+When scanned, customer immediately accesses:
+\begin{itemize}
+    \item Service-specific content (menu, room list, etc.)
+    \item Direct ordering or booking interface
+    \item Service chatbot
+    \item Staff calling button
+\end{itemize}
+
+\textbf{Use Case:} Posted at tables, in hotel rooms, at spa reception
+
+\section{QR Code Management}
+
+\subsection{Generation}
+
+\begin{itemize}
+    \item Business owners or managers can generate QR codes instantly
+    \item No design skills required
+    \item QR codes can be customized with business logo
+    \item Available in multiple formats (PNG, SVG, PDF)
+    \item Different sizes for different use cases
+\end{itemize}
+
+\subsection{Regeneration}
+
+QR codes can be regenerated if:
+\begin{itemize}
+    \item Security concerns arise
+    \item Previous code has been compromised
+    \item Business wants to refresh tracking
+    \item Code quality has degraded
+\end{itemize}
+
+\subsection{Deactivation}
+
+QR codes can be deactivated:
+\begin{itemize}
+    \item When service is temporarily closed
+    \item During maintenance periods
+    \item To prevent customer access
+    \item When branch is inactive
+\end{itemize}
+
+\newpage
+
+\chapter{Restaurant Management Features}
+
+\section{Overview}
+
+The Restaurant Management module provides comprehensive tools for managing food and beverage operations, from menu creation to order processing.
+
+\section{Menu Categories}
+
+\subsection{Purpose}
+
+Categories organize menu items into logical groups, making navigation easier for customers and management simpler for staff.
+
+\subsection{Category Examples}
+
+\begin{itemize}
+    \item Appetizers \& Starters
+    \item Soups \& Salads
+    \item Main Courses
+    \item Pasta \& Pizza
+    \item Desserts
+    \item Beverages (Non-Alcoholic)
+    \item Wine \& Cocktails
+    \item Kids Menu
+    \item Lunch Specials
+    \item Chef's Recommendations
+\end{itemize}
+
+\subsection{Category Features}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Feature} & \textbf{Description} \\
+\hline
+Display Order & Control the sequence categories appear in the menu (1, 2, 3...) \\
+\hline
+Category Image & Visual icon or photo representing the category \\
+\hline
+Description & Brief explanation of category contents \\
+\hline
+Active Status & Enable or disable entire category temporarily \\
+\hline
+Nested Categories & Create subcategories within main categories \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Menu Items}
+
+\subsection{Core Information}
+
+Each menu item contains:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Attribute} & \textbf{Description} \\
+\hline
+Name & Item name as shown to customers (e.g., "Grilled Atlantic Salmon") \\
+\hline
+Description & Detailed description, preparation method, ingredients, allergen info \\
+\hline
+Price & Base price in business's default currency \\
+\hline
+Category & Primary category assignment \\
+\hline
+Images & Multiple high-quality photos of the dish \\
+\hline
+Preparation Time & Estimated cooking/preparation time in minutes \\
+\hline
+Priority & Display prominence (higher priority appears first) \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Dietary and Special Indicators}
+
+\begin{itemize}
+    \item \textbf{Vegetarian:} Contains no meat or fish
+    \item \textbf{Vegan:} Contains no animal products
+    \item \textbf{Gluten-Free:} Safe for celiac disease
+    \item \textbf{Spicy:} Indicates spice level (mild, medium, hot, extra hot)
+    \item \textbf{Chef's Special:} Featured or recommended items
+    \item \textbf{Seasonal:} Available only during specific times
+    \item \textbf{New Item:} Recently added to menu
+    \item \textbf{Popular:} Customer favorites based on order data
+\end{itemize}
+
+\section{Ingredients Management}
+
+\subsection{Purpose}
+
+Track individual ingredients for:
+\begin{itemize}
+    \item Allergen disclosure
+    \item Dietary requirement compliance
+    \item Customization options (remove ingredients)
+    \item Cost tracking
+\end{itemize}
+
+\subsection{Ingredient Attributes}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Attribute} & \textbf{Description} \\
+\hline
+Name & Ingredient name (e.g., "Salmon", "Olive Oil", "Garlic") \\
+\hline
+Allergen Flag & Marked if ingredient is a common allergen \\
+\hline
+Dietary Tags & Vegetarian, Vegan, Gluten-Free, etc. \\
+\hline
+Cost Per Unit & Internal cost for inventory purposes \\
+\hline
+Unit Type & Measurement unit (kg, liter, piece, gram) \\
+\hline
+Availability & Active or temporarily unavailable \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Use Cases}
+
+\begin{itemize}
+    \item \textbf{Customer with Allergy:} "I'm allergic to peanuts" → System shows all items without peanuts
+    \item \textbf{Dietary Preference:} "Show me vegan options" → System filters menu
+    \item \textbf{Customization:} Customer can request "No onions" when ingredient is listed
+    \item \textbf{Ingredient Shortage:} Mark ingredient unavailable, system automatically hides affected menu items
+\end{itemize}
+
+\section{Customizations and Add-Ons}
+
+\subsection{Add-Ons}
+
+Optional extras that enhance menu items:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|p{6cm}|}
+\hline
+\textbf{Add-On} & \textbf{Price} & \textbf{Item Example} \\
+\hline
+Extra Cheese & +\$1.50 & Burgers, Sandwiches \\
+\hline
+Bacon Side & +\$2.00 & Breakfast items \\
+\hline
+Avocado & +\$2.50 & Salads, Sandwiches \\
+\hline
+Extra Protein & +\$3.50 & Salads, Pasta \\
+\hline
+Gluten-Free Bun & +\$1.00 & Burgers \\
+\hline
+Sauce on Side & No charge & Any main course \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Add-On Configuration}
+
+\begin{itemize}
+    \item \textbf{Required:} Customer must select (e.g., "Choose your protein")
+    \item \textbf{Optional:} Customer can skip
+    \item \textbf{Multiple Selection:} Can add several extras
+    \item \textbf{Single Selection:} Only one allowed
+    \item \textbf{Quantity Limits:} Maximum additions per order
+\end{itemize}
+
+\subsection{Toppings}
+
+Specialized for items like pizzas, salads, and desserts:
+
+\begin{itemize}
+    \item \textbf{Pizza Toppings:} Pepperoni, Mushrooms, Olives, Bell Peppers, Onions, Sausage
+    \item \textbf{Salad Toppings:} Croutons, Cheese, Bacon Bits, Dressing Options
+    \item \textbf{Ice Cream Toppings:} Sprinkles, Chocolate Sauce, Nuts, Whipped Cream
+    \item \textbf{Burger Toppings:} Lettuce, Tomato, Pickles, Onions, Special Sauce
+\end{itemize}
+
+\subsection{Complements (Side Items)}
+
+Items that pair with main dishes:
+
+\begin{itemize}
+    \item Steak → Choose side: Mashed Potatoes, Vegetables, Rice, Salad
+    \item Burger → Choose side: French Fries, Sweet Potato Fries, Onion Rings, Coleslaw
+    \item Breakfast → Choose side: Hash Browns, Fruit Cup, Yogurt, Toast
+    \item Coffee → Choose complement: Croissant, Muffin, Biscotti
+\end{itemize}
+
+\section{Menu Assignment System}
+
+\subsection{Centralized vs. Localized Menus}
+
+\textbf{Challenge:} A restaurant chain with 5 locations wants consistency but also flexibility.
+
+\textbf{Solution:} Two-step system:
+
+\begin{enumerate}
+    \item \textbf{Create Menu Items Centrally:}
+    \begin{itemize}
+        \item Business owner creates master menu (100 items)
+        \item All items stored in central library
+        \item Standardized recipes and descriptions
+    \end{itemize}
+    
+    \item \textbf{Assign to Branch Services:}
+    \begin{itemize}
+        \item Downtown branch: Assigns all 100 items
+        \item Airport branch: Assigns only 50 quick-service items
+        \item Mall branch: Assigns 75 items, excludes alcohol
+        \item Beach branch: Adds 10 location-specific items
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Bulk Assignment Features}
+
+\begin{itemize}
+    \item \textbf{Drag-and-Drop Categories:} Assign entire category to a branch in one action
+    \item \textbf{Select Multiple Items:} Checkbox selection for batch assignment
+    \item \textbf{Copy from Another Branch:} Duplicate menu assignments quickly
+    \item \textbf{Availability Override:} Global item can be marked unavailable at specific branch
+    \item \textbf{Price Override:} Adjust pricing per location (e.g., airport pricing premium)
+\end{itemize}
+
+\subsection{Use Case Example}
+
+\textbf{Scenario:} "Gourmet Burgers" has 3 locations
+
+\begin{verbatim}
+Master Menu (Created Once):
+├── Appetizers (8 items)
+├── Burgers (15 items)
+├── Salads (6 items)
+├── Sides (10 items)
+├── Desserts (5 items)
+└── Beverages (12 items)
+
+Assignment:
+├── Downtown Location: All categories assigned
+├── Food Court Location: Only Burgers + Sides + Beverages
+└── Airport Location: All except Salads (prep time too long)
+\end{verbatim}
+
+\newpage
+
+\chapter{Lodging Management Features}
+
+\section{Overview}
+
+The Lodging Management module handles accommodation-based businesses including hotels, resorts, vacation rentals, and serviced apartments.
+
+\section{Accommodation (Room) Management}
+
+\subsection{Room Attributes}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Attribute} & \textbf{Description} \\
+\hline
+Room Number & Unique identifier (e.g., 101, 201, Suite-A) \\
+\hline
+Room Type & Classification (Single, Double, Suite, Penthouse, etc.) \\
+\hline
+Floor & Physical floor number for organization \\
+\hline
+Capacity & Maximum occupancy (number of guests) \\
+\hline
+Size & Room area in square meters or feet \\
+\hline
+Bed Configuration & King, Queen, Twin, etc. \\
+\hline
+View Type & Ocean view, City view, Garden view, etc. \\
+\hline
+Price Per Night & Nightly rate in default currency \\
+\hline
+Status & Available, Occupied, Cleaning, Maintenance, Reserved \\
+\hline
+Images & Multiple photos of the room \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Room Types}
+
+\begin{itemize}
+    \item \textbf{Standard Single:} One bed, basic amenities, 1-2 guests
+    \item \textbf{Standard Double:} Two beds or one large bed, 2 guests
+    \item \textbf{Deluxe Room:} Enhanced amenities, better view, 2-3 guests
+    \item \textbf{Junior Suite:} Separate sitting area, 2-3 guests
+    \item \textbf{Executive Suite:} Living room, kitchenette, 3-4 guests
+    \item \textbf{Penthouse:} Top floor, luxury amenities, 4+ guests
+    \item \textbf{Family Room:} Multiple beds, 4-6 guests
+    \item \textbf{Accessible Room:} Disability-friendly features
+\end{itemize}
+
+\section{Floor Organization}
+
+\subsection{Purpose}
+
+Organize rooms by physical floor for:
+\begin{itemize}
+    \item Housekeeping assignment and routing
+    \item Maintenance scheduling
+    \item Guest preferences (high floor vs. low floor)
+    \item Emergency evacuation planning
+    \item Service delivery optimization
+\end{itemize}
+
+\subsection{Floor Attributes}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Attribute} & \textbf{Description} \\
+\hline
+Floor Number & Physical floor (1, 2, 3, ... or G, M, 1, 2...) \\
+\hline
+Floor Name & Optional designation (Ground, Mezzanine, Club Level) \\
+\hline
+Room Count & Number of rooms on this floor \\
+\hline
+Special Features & Smoking/Non-smoking, Executive level, etc. \\
+\hline
+Status & Active, Closed for Renovation \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Amenities System}
+
+\subsection{Room-Level Amenities}
+
+Features available in individual rooms:
+
+\begin{itemize}
+    \item \textbf{Electronics:} TV, WiFi, Telephone, Safe, Mini-fridge
+    \item \textbf{Climate:} Air Conditioning, Heating, Fan
+    \item \textbf{Bathroom:} Hairdryer, Toiletries, Bathrobe, Slippers
+    \item \textbf{Furniture:} Desk, Chair, Couch, Coffee table
+    \item \textbf{Bedding:} Premium linens, Extra pillows, Blackout curtains
+    \item \textbf{Entertainment:} Cable/Satellite TV, Streaming services, Sound system
+    \item \textbf{Kitchen:} Microwave, Coffee maker, Mini-bar
+    \item \textbf{Extras:} Balcony/Terrace, Ocean view, Fireplace
+\end{itemize}
+
+\subsection{Property-Level Amenities}
+
+Shared facilities available to all guests:
+
+\begin{itemize}
+    \item \textbf{Recreation:} Swimming pool, Fitness center, Spa, Tennis courts
+    \item \textbf{Dining:} Restaurant, Bar, Room service, Complimentary breakfast
+    \item \textbf{Business:} Business center, Meeting rooms, Conference facilities
+    \item \textbf{Services:} Concierge, Valet parking, Laundry, Dry cleaning
+    \item \textbf{Family:} Kids club, Playground, Babysitting service
+    \item \textbf{Accessibility:} Wheelchair access, Elevators, Accessible parking
+    \item \textbf{Safety:} 24-hour security, CCTV, In-room safe
+    \item \textbf{Convenience:} Free parking, Airport shuttle, Luggage storage
+\end{itemize}
+
+\subsection{Amenity Management}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Feature} & \textbf{Description} \\
+\hline
+Additional Cost & Some amenities may incur charges (e.g., mini-bar, spa) \\
+\hline
+Availability & Can be marked available or temporarily unavailable \\
+\hline
+Booking Required & Some amenities need advance reservation (spa, restaurant) \\
+\hline
+Capacity Limits & Pool or gym may have maximum occupancy \\
+\hline
+Operating Hours & Facilities have specific opening/closing times \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Guest Services Integration}
+
+\subsection{In-Room Service Requests}
+
+Guests can use QR code in their room to:
+
+\begin{itemize}
+    \item Request housekeeping (towels, toiletries, cleaning)
+    \item Order room service from restaurant menu
+    \item Report maintenance issues
+    \item Request wake-up calls
+    \item Book spa appointments
+    \item Reserve restaurant tables
+    \item Request late checkout
+    \item Call front desk or concierge
+    \item Chat with AI assistant for information
+\end{itemize}
+
+\subsection{Room Status Workflow}
+
+\begin{enumerate}
+    \item \textbf{Available:} Room is clean and ready for new guest
+    \item \textbf{Reserved:} Booking confirmed, awaiting guest arrival
+    \item \textbf{Occupied:} Guest currently staying in room
+    \item \textbf{Checkout:} Guest has left, needs cleaning
+    \item \textbf{Cleaning:} Housekeeping in progress
+    \item \textbf{Maintenance:} Repair or maintenance required
+    \item \textbf{Inspection:} Quality check after cleaning
+    \item \textbf{Available:} Cycle completes, ready for next guest
+\end{enumerate}
+
+\newpage
+
+\chapter{Staff Management and Device System}
+
+\section{Overview}
+
+The Staff Management system coordinates employees across services through device registration and real-time communication.
+
+\section{Staff Units}
+
+\subsection{Definition}
+
+A Staff Unit is a logical grouping of employees serving a specific service. Think of it as a "team" or "department."
+
+\subsection{Examples by Business Type}
+
+\begin{itemize}
+    \item \textbf{Restaurant:}
+    \begin{itemize}
+        \item Waitstaff (front-of-house service)
+        \item Kitchen Staff (food preparation)
+        \item Bar Staff (beverage service)
+        \item Management (supervisors)
+    \end{itemize}
+    
+    \item \textbf{Hotel:}
+    \begin{itemize}
+        \item Front Desk (check-in/checkout)
+        \item Housekeeping (room cleaning)
+        \item Concierge (guest services)
+        \item Maintenance (repairs)
+        \item Room Service (food delivery)
+    \end{itemize}
+    
+    \item \textbf{Spa:}
+    \begin{itemize}
+        \item Reception (bookings)
+        \item Therapists (treatments)
+        \item Aestheticians (beauty services)
+    \end{itemize}
+\end{itemize}
+
+\subsection{Staff Unit Configuration}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Attribute} & \textbf{Description} \\
+\hline
+Name & Unit identifier (e.g., "Waitstaff", "Front Desk") \\
+\hline
+Description & Purpose and responsibilities of the unit \\
+\hline
+Manager & Responsible person for this team \\
+\hline
+Member Count & Number of registered devices/staff \\
+\hline
+Status & Active or Inactive \\
+\hline
+Service & Parent service this unit serves \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Device Registration System}
+
+\subsection{Purpose}
+
+Staff members use tablets, phones, or computers to:
+\begin{itemize}
+    \item Receive customer service requests
+    \item Answer real-time calls from customers
+    \item View order notifications
+    \item Update room status
+    \item Communicate with team members
+    \item Access work schedules
+\end{itemize}
+
+\subsection{Registration Process}
+
+\begin{enumerate}
+    \item \textbf{Manager Creates Staff Unit:}
+    \begin{itemize}
+        \item Goes to service settings
+        \item Creates "Waitstaff" unit
+        \item Generates registration QR code
+    \end{itemize}
+    
+    \item \textbf{Manager Displays QR Code:}
+    \begin{itemize}
+        \item Prints QR code poster
+        \item Or displays on screen/tablet
+    \end{itemize}
+    
+    \item \textbf{Staff Member Opens App:}
+    \begin{itemize}
+        \item Downloads staff app on their device
+        \item Taps "Register Device"
+    \end{itemize}
+    
+    \item \textbf{Staff Member Scans QR:}
+    \begin{itemize}
+        \item Scans manager's QR code
+        \item App sends registration request
+    \end{itemize}
+    
+    \item \textbf{System Registers Device:}
+    \begin{itemize}
+        \item Creates device record
+        \item Issues device credentials
+        \item Assigns to staff unit
+    \end{itemize}
+    
+    \item \textbf{Staff Member Ready:}
+    \begin{itemize}
+        \item Device logged in automatically
+        \item Starts receiving notifications
+        \item Can answer customer calls
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Device Attributes}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Attribute} & \textbf{Description} \\
+\hline
+Device ID & Unique system identifier \\
+\hline
+Device Name & Display name (e.g., "Waiter iPad 1") \\
+\hline
+Device Type & Phone, Tablet, or Desktop \\
+\hline
+Status & Active, Inactive, Unregistered \\
+\hline
+Staff Unit & Assigned team \\
+\hline
+Registration Date & When device was registered \\
+\hline
+Last Active & Last time device was online \\
+\hline
+FCM Token & For push notifications (Firebase Cloud Messaging) \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Device Token Management}
+
+\begin{itemize}
+    \item \textbf{Access Token:} Valid for 24 hours, used for all API requests
+    \item \textbf{Refresh Token:} Long-lived token to get new access tokens
+    \item \textbf{Automatic Renewal:} App refreshes tokens automatically before expiration
+    \item \textbf{Revocation:} Manager can deactivate device to immediately block access
+\end{itemize}
+
+\section{Real-Time Calling System}
+
+\subsection{Overview}
+
+Customers can initiate voice or video calls with staff directly through the QR interface, creating instant communication channels.
+
+\subsection{Call Flow}
+
+\begin{enumerate}
+    \item \textbf{Customer Needs Assistance:}
+    \begin{itemize}
+        \item Scans QR code at table/room
+        \item Taps "Call for Service" button
+    \end{itemize}
+    
+    \item \textbf{System Routes Call:}
+    \begin{itemize}
+        \item Identifies service type
+        \item Finds available staff unit
+        \item Sends call to all registered devices in unit
+    \end{itemize}
+    
+    \item \textbf{Staff Devices Ring:}
+    \begin{itemize}
+        \item All waiter tablets receive notification
+        \item Shows customer location (table/room number)
+        \item Displays caller context
+    \end{itemize}
+    
+    \item \textbf{First Available Staff Answers:}
+    \begin{itemize}
+        \item Waiter taps "Answer"
+        \item Other devices stop ringing
+        \item Real-time connection established
+    \end{itemize}
+    
+    \item \textbf{Conversation:}
+    \begin{itemize}
+        \item Audio or video call active
+        \item Customer explains need
+        \item Staff provides assistance
+    \end{itemize}
+    
+    \item \textbf{Call Ends:}
+    \begin{itemize}
+        \item Either party can disconnect
+        \item Call duration logged
+        \item Staff can add notes
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Call Features}
+
+\begin{itemize}
+    \item \textbf{Audio Calls:} Voice-only for quick questions
+    \item \textbf{Video Calls:} Face-to-face for complex issues
+    \item \textbf{Call Transfer:} Route to different staff unit
+    \item \textbf{Call History:} Review past interactions
+    \item \textbf{Location Context:} Automatically shows table/room number
+    \item \textbf{Queue Management:} Multiple calls handled in order
+\end{itemize}
+
+\subsection{AI Agent Support}
+
+\begin{itemize}
+    \item \textbf{Initial Response:} AI agent can answer simple questions immediately
+    \item \textbf{Escalation:} Complex queries transferred to human staff
+    \item \textbf{After-Hours:} AI handles calls when staff unavailable
+    \item \textbf{Voice Options:} Male or female voice selection
+    \item \textbf{Language Support:} Multiple languages for international guests
+\end{itemize}
+
+\section{Push Notifications (FCM Integration)}
+
+\begin{itemize}
+    \item \textbf{Incoming Calls:} "Customer calling from Table 12"
+    \item \textbf{Service Requests:} "Room 305 requests towels"
+    \item \textbf{Orders:} "New order for Table 7"
+    \item \textbf{Status Updates:} "Room 201 ready for inspection"
+    \item \textbf{Shift Alerts:} "Your shift starts in 15 minutes"
+    \item \textbf{Team Messages:} Communications from managers
+\end{itemize}
+
+\subsection{Notification Management}
+
+Staff can:
+\begin{itemize}
+    \item Control notification sounds and vibrations
+    \item Set "Do Not Disturb" during breaks
+    \item Prioritize urgent notifications
+    \item View notification history
+    \item Respond directly from notification
+\end{itemize}
+
+\end{document}
