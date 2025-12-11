@@ -5,7 +5,7 @@ class ChatbotClient {
     const savedConfig = localStorage.getItem("chatbot_config");
     const savedUrl = savedConfig ? JSON.parse(savedConfig).serverUrl : null;
 
-    this.serverUrl = serverFromUrl || savedUrl || "http:localhost:8000";
+    this.serverUrl = serverFromUrl || savedUrl || "https://api.dev.ihakken.com";
     this.sessionId = null;
     this.branchServiceId = null;
     this.ws = null;
@@ -52,7 +52,7 @@ class ChatbotClient {
     if (saved) {
       const config = JSON.parse(saved);
       document.getElementById("serverUrl").value =
-        config.serverUrl || "http://localhost:8000";
+        config.serverUrl || "https://api.dev.ihakken.com";
       document.getElementById("authType").value = config.authType || "none";
       document.getElementById("authToken").value = config.authToken || "";
       document.getElementById("proxyToken").value = config.proxyToken || "";
@@ -90,7 +90,7 @@ class ChatbotClient {
   async loadConfig() {
     const serverUrlInput = document.getElementById("serverUrl").value.trim();
     this.serverUrl = this.normalizeServerUrl(
-      serverUrlInput || "http://localhost:8000"
+      serverUrlInput || "https://api.dev.ihakken.com"
     );
     this.authType = document.getElementById("authType").value;
     this.authToken = document.getElementById("authToken").value;
@@ -277,10 +277,9 @@ class ChatbotClient {
     }
 
     const serverUrl = this.normalizeServerUrl(this.serverUrl);
-    const isSecure = serverUrl.startsWith("https");
-    const protocol = isSecure ? "wss" : "ws";
-    // Extract host:port from URL (remove protocol)
-    const hostPort = serverUrl.replace(/^http?:\/\//, "");
+    const urlObj = new URL(serverUrl);
+    const protocol = urlObj.protocol === "https:" ? "wss" : "ws";
+    const hostPort = urlObj.host;
 
     let wsUrl = `${protocol}://${hostPort}/api/v1/chatbot/sessions/${this.sessionId}/`;
 
@@ -316,13 +315,33 @@ class ChatbotClient {
         this.updateStatus("Error", "error");
         this.addSystemMessage(`WebSocket error: ${error}`);
         console.error("WebSocket error:", error);
+        console.error("WebSocket readyState:", this.ws.readyState);
+        console.error("WebSocket URL:", this.ws.url);
       };
 
       this.ws.onclose = (event) => {
+        console.log(
+          "WebSocket closed with code:",
+          event.code,
+          "reason:",
+          event.reason
+        );
         if (event.code === 4001) {
           this.addSystemMessage(
             `WebSocket authentication failed: ${
               event.reason || "Invalid proxy token"
+            }`
+          );
+        } else if (event.code === 1006) {
+          this.addSystemMessage(
+            "WebSocket connection failed (server unreachable or connection refused)."
+          );
+        } else if (event.code === 1000) {
+          this.addSystemMessage("WebSocket closed normally.");
+        } else {
+          this.addSystemMessage(
+            `WebSocket closed with code ${event.code}: ${
+              event.reason || "Unknown reason"
             }`
           );
         }
